@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    <h1 class="display-4">Display Bot : @ViewBag.Symbol | Clients - @ViewBag.Count | Bots - @ViewBag.Counter</h1>
+<div class="text-center">
+    <form method="post">
+        <div style=" float: left; margin: 10px;">
+            <p>
+                <select name="Symbol" class="Symbol" style="width: 150px">
+                    <option value="BTCUSDT"> BTC-USDT </option>
+                    <option value="ETHUSDT"> ETH-USDT </option>
+                    <option value="XRPUSDT"> XRP-USDT </option>
+                    <option value="ADAUSDT"> ADA-USDT </option>
+                    <option value="BNBUSDT"> BNB-USDT </option>
+                    <option value="DOGEUSDT"> DOGE-USDT </option>
+                    <option value="DOTUSDT"> DOT-USDT </option>
+                    <option value="CAKEUSDT"> CAKE-USDT </option>
+                    <option value="LTCUSDT"> LTC-USDT</option>
+                </select>
+            </p>
+
+            <p>
+                <input type="submit" value="Enter" style="width: 150px" />
+            </p>
+            <hr style="width: 150px;text-align:left;margin-left:0"/>
+            <p>
+                <input type="button" id="streamButton" value="Stream" style="width: 150px" />
+            </p>
+            <p>
+                <input type="button" id="stopStreamButton" value="Stop" style="width: 150px" />
+            </p>
+           
+           <hr style="width: 150px;text-align:left;margin-left:0"/>
+            <p>
+                <input type="button" id="buyButton" value="BUY ↑" style=" width: 150px; height: 50px; background: green;color:white" />
+            </p>
+            <p>
+                <input type="button" id="sellButton" value="SELL ↓" style="width: 150px;height: 50px; background: crimson;color: white" />
+            </p>
+        </div>
+    </form>
+</div>
+
+
+<div id="priceInfo" style="float: left; width: 500px; margin: 10px; color: navy; overflow:auto; height: 60vh;">
+    <p>
+        <ul id="messagesList" style="list-style-type: none"></ul>
+    </p>
+</div>
+
+<script src="https://code.jquery.com/jquery-git1.min.js"></script>
+<script>
+    $(document).on('change', '.Symbol', function () {
+        //var widget = changeFX(this.value);
+        document.getElementById('content').src = "chart.html?value=" + this.value;
+        document.getElementById('content').style.display = "block";
+    });
+</script>
+<div style="float: left; ">
+    <iframe src="chart.html" id="content" scrolling="no" style=" width: 401px;height: 501px;">
+    </iframe>
+
+</div>
+
+
+<script src="js/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+
+
+
+
